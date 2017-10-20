@@ -1,0 +1,51 @@
+<html lang="en" ng-app="addGoal">
+<head>
+<title>Goal Tracker</title>
+<style>
+  body {
+    background-image: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2015/04/colortheory-730x370.jpg");
+    background-size: cover;
+  }
+  h1 {
+    color: #ffffff;
+    font-size: 30px;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  }
+  button {
+    background-color: #ffff00;
+  border: 0;
+  color: #000000;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  }
+
+  ul {
+    list-style-type: circle;
+
+  }
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script src="c.js"></script>
+</head>
+<body ng-controller="addGoalsController">
+   <h1>Add your Goals</h1>
+
+
+  
+  <form name="goalsFrm" ng-submit="addGoal()">
+     <input type="text" name="newGoal" ng-model="newGoal" required />
+     <button ng-disabled="goalsFrm.$invalid" ng-click="addGoal()">Add</button>
+  </form>
+  <label ng-repeat="goal in goals"><input type="checkbox" checklist-model="selected.gs" checklist-value="goal" /> {{goal.title}}
+  <ul>
+    <li ng-repeat="goal in goals" class="{'fadeOut' : goal.done}">
+      <span class="fa fa-close" ng-click="deleteGoal($index)"></span>
+      <span>{{goal.title}}</span>
+    </li>
+  </ul>
+  
+</body>
+</html>
