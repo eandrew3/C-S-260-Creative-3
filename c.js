@@ -8,7 +8,7 @@ angular
 		$scope.addGoal = function() {
 			$scope.goals.push({'title': $scope.newGoal, 'done':false})
 			$scope.newGoal = ''
-			var audio = new Audio('beep-02.mp3');
+			var audio = new Audio('c.mp3');
  			audio.play();
 		}
 
