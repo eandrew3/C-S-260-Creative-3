@@ -1,7 +1,55 @@
 <html lang="en" ng-app="addGoal">
 <head>
-<title>Goal Tracker</title>
+<title>Random Note Keeper</title>
 <style>
+* {
+  font-size: 24px;
+  font-family: 'Titillium Web', sans-serif;
+  color: black;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+input {
+  border: 0;
+  margin-right: 5px;
+  background: transparent;
+  border-bottom: 1px solid black;
+  width: 180px;
+  padding: 8px;
+  
+}
+
+button {
+  background-color: $melon;
+  border: 0;
+  padding: 8px 20px;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 25px;
+}
+
+li {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.fa-close {
+  cursor: pointer;
+}
+
   body {
     background-image: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2015/04/colortheory-730x370.jpg");
     background-size: cover;
@@ -31,18 +79,16 @@
 <script src="c.js"></script>
 </head>
 <body ng-controller="addGoalsController">
-   <h1>Add your Goals</h1>
+   <h1>Add A Random Note</h1>
 
 
   
   <form name="goalsFrm" ng-submit="addGoal()">
      <input type="text" name="newGoal" ng-model="newGoal" required />
-     <button ng-disabled="goalsFrm.$invalid" ng-click="addGoal()">Add</button>
+     <button ng-disabled="goalsFrm.$invalid" ng-click="addGoal()" ng-click="playAudio()">Add</button>
   </form>
-  <label ng-repeat="goal in goals"><input type="checkbox" checklist-model="selected.gs" checklist-value="goal" /> {{goal.title}}
   <ul>
     <li ng-repeat="goal in goals" class="{'fadeOut' : goal.done}">
-      <span class="fa fa-close" ng-click="deleteGoal($index)"></span>
       <span>{{goal.title}}</span>
     </li>
   </ul>
